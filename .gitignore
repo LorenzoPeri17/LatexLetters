@@ -1,3 +1,12 @@
+.vscode
+
+## Generated files
+bibliography.bib
+original-document.tex
+original-document.pdf
+revised-document.tex
+revised-document.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

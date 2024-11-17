@@ -1,0 +1,140 @@
+\documentclass[a4paper,12pt]{responseletter}
+
+%%%%%%%%%%%%%%%%%  Example setup %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{filecontents}[overwrite]{bibliography.bib}
+    @book{Knuth_1986, address={Reading, Mass}, series={Computers and typesetting}, title={The TeXbook}, ISBN={978-0-201-13447-6}, callNumber={Z253.4.T47 K58 1986}, publisher={Addison-Wesley}, author={Knuth, Donald Ervin}, year={1986}, collection={Computers and typesetting} }
+\end{filecontents}
+
+\begin{filecontents}[overwrite]{original-document.tex}
+\documentclass{article}
+\usepackage{nameref}
+\begin{document}
+\section{Original Section}\label{section}
+\end{document}
+\end{filecontents}
+
+\begin{filecontents}[overwrite]{revised-document.tex}
+\documentclass{article}
+\usepackage{nameref}
+\begin{document}
+\section{Revised Section}\label{section}
+\end{document}
+\end{filecontents}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% If something does not work %%%%%%%%%%%%
+%%%%%%%%%%% don't forget to compile %%%%%%%%%%%%%
+%%%%%%%%%%%%% original-document.tex %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% and %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% revised-document.tex %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address{
+% TC:ignore
+From Street\\
+From City\\
+From Postcode\\
+From Country
+% TC:endignore
+}
+
+\signature{Lorenzo Peri}
+
+\headerlogo{\includegraphics[height=2cm]{LetterFiles/logo.png}}
+
+%% include references from the manuscript
+\external[original-]{original-document}
+\external[revised-]{revised-document}
+
+
+\begin{document}
+
+\begin{letter}{
+% TC:ignore
+Journal Street\\
+Journal City\\
+Journal Postcode\\
+Journal Country
+% TC:endignore
+}
+
+% TC:ignore
+\opening{Dear Editor,}
+
+Thank you for forwarding the reports on our manuscript entitled \textbf{manuscript title}. 
+
+We include a full response to the referees further below but here we highlight the major changes:
+
+\begin{itemize}
+    \item Point 1\\
+    \item Point 2
+\end{itemize}
+
+\closing{Yours sincerely,}
+
+\newref{Referee 1}
+
+\referee{General points.}
+
+General Response.
+
+\begin{enumerate}
+    \item 
+    \referee{First point.}
+
+    First Response.
+
+    \item 
+    \referee{Second point.}
+
+    Second Response.
+\end{enumerate}
+
+\newref{Referee 2}
+
+(The mean one)
+
+\begin{enumerate}
+    \item 
+    \referee{Can you have figures?}
+
+    We can have figures in the text.
+
+    \begin{figure}
+        \includegraphics[height=2cm]{LetterFiles/logo.png}
+        \caption{We can have figures!}
+    \end{figure}
+
+    \item 
+    \referee{Can you have tables?}
+
+    And we can have also tables.
+    \begin{table}
+        \begin{tabular}{ |c|c|c| } 
+            \hline
+            cell1 & cell2 & cell3 \\ 
+            \hline
+            cell4 & cell5 & cell6 \\ 
+            \hline
+        \end{tabular}
+        \caption{We can have tables!}
+    \end{table}
+
+    \item 
+    \referee{Can you have citations?}
+
+    Yes, we can even have citations. Here is the \TeX book  \cite{Knuth_1986}!
+
+    \item 
+    \referee{Can you reference sections or equations form the manuscript?}
+
+    Yes I can use \texttt{\textbackslash external[prefix]\{document-name\}} to reference both original and revised versions without collisions! Section \ref{original-section}: \nameref{original-section} of the original is NOT Section \ref{revised-section}: \nameref{revised-section} of the revised manuscript!
+
+\end{enumerate}
+
+\end{letter}
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
