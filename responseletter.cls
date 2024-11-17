@@ -4,6 +4,12 @@
 %% Based on the eletter2 class
 %% https://www.overleaf.com/latex/templates/ntu-eee-letterhead/qfxzzmxfpcnq
 
+%% Define default font size as 12pt
+\RequirePackage{kvoptions}
+\DeclareStringOption[12pt]{fontsize}
+\ProcessKeyvalOptions{responseletter}\relax
+\PassOptionsToClass{\responseletter@fontsize}{letter}
+
 %%% Load the letter class
 \DeclareOption*{\expandafter\PassOptionsToClass\expandafter{\CurrentOption}{letter}}
 \ProcessOptions\relax
@@ -23,6 +29,12 @@
 \RequirePackage{placeins}
 \RequirePackage{caption}
 \RequirePackage{cite}
+
+%% Useful packages we will proably need anyway
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bm}
 
 %%% Define commands
 \newif\ifCL@headerlogo\CL@headerlogofalse

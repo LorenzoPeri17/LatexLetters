@@ -4,6 +4,12 @@
 %% Based on the eletter2 class
 %% https://www.overleaf.com/latex/templates/ntu-eee-letterhead/qfxzzmxfpcnq
 
+%% Define default font size as 12pt
+\RequirePackage{kvoptions}
+\DeclareStringOption[12pt]{fontsize}
+\ProcessKeyvalOptions{coverletter}\relax
+\PassOptionsToClass{\coverletter@fontsize}{letter}
+
 %%% Load the letter class
 \DeclareOption*{\expandafter\PassOptionsToClass\expandafter{\CurrentOption}{letter}}
 \ProcessOptions\relax
@@ -30,7 +36,7 @@
 \smallskip%
 }
 
-\newcommand{\suggreferee}[3]{%
+\newcommand{\suggestedref}[3]{%
   \textbf{#1}, #2%
   \begin{itemize}
     \item email: \href{mailto:#3}{\uline{#3}}
