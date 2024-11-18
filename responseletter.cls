@@ -36,14 +36,21 @@
 \RequirePackage{amsfonts}
 \RequirePackage{bm}
 
+%%% Define colors and styles
+\newcommand{\refereecolor}{blue}
+\newcommand{\refereestyle}{\itshape}
+
+\newcommand{\todocolor}{magenta}
+\newcommand{\todostyle}{\bfseries}
+
 %%% Define commands
 \newif\ifCL@headerlogo\CL@headerlogofalse
 \newcommand{\@headerlogo}{}
 \newcommand{\headerlogo}[1]{\renewcommand{\@headerlogo}{#1}\CL@headerlogotrue}
 
 \newcommand{\newref}[1]{\newpage{\Large\textbf{#1}}}
-\newcommand{\referee}[1]{\textit{\color{blue}#1}\\*[1ex]}
-\newcommand{\todo}[1]{\textbf{\color{magenta}#1}}
+\newcommand{\referee}[1]{{\refereestyle{\color{\refereecolor}#1}}\\*[1ex]}
+\newcommand{\todo}[1]{{\todostyle{\color{\todocolor}#1}}}
 
 \newcommand*{\addFileDependency}[1]{
   \typeout{(#1)}
